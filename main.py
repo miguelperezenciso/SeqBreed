@@ -5,17 +5,14 @@
 """
 
 import numpy as np
-import gzip
-import sys
-import time
 import copy
 import pickle
 import os
 import matplotlib.pyplot as plt
 
 # specific seqbreed modules
-import genome as gg
-import selection as sel
+from SeqBreed import genome as gg
+from SeqBreed.selection import selection as sel
 
 # current dir
 cdir = os.getcwd()
