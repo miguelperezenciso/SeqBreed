@@ -204,7 +204,7 @@ treated as 'gen' format.
 
 **NOTE:** **SeqBreed** automatically recognizes ploidy from vcf files. Ploidy must be specified for gen files (see below).
 
-#####IMPORTANT: No missing genotypes are allowed and SeqBreed assumes genotypes to be phased. 
+#### IMPORTANT: No missing genotypes are allowed and SeqBreed assumes genotypes to be phased. 
 This is simply because **SeqBreed** must know which are the parental haplotypes. Since this is unlikely,
 phasing and imputation with some standard algorithm will do. Errors in imputation and phasing should
 have virtually no effect on the conclusions to be drawn from SeqBreed simulations.
