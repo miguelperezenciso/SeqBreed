@@ -4,25 +4,24 @@
 """
 
 import numpy as np
-import time
 import matplotlib.pyplot as plt
 import pickle
 import os
 import copy
 
 # SeqBreed modules
-import genome as gg
-import selection as sel
+from SeqBreed import genome as gg
+from SeqBreed.selection import selection as sel
 
 ############ main #################
 # current dir
 cdir = os.getcwd()
 
 # working directory
-wdir = cdir + '/DGRP'
+wdir = cdir
 
 # input file dir
-ddir= wdir
+ddir= cdir
 
 # input files
 chipfiles = [ ] # can include sequence as output from read_vcf
