@@ -345,7 +345,7 @@ pop.plot(trait=itrait)
 
 ##### Retrieving genotype data 
 **SeqBreed** internally keeps individual genomes only as a collection of recombination blocks and founder origins of
-those blocks (Perez-Enciso et al. 2000, DOI: 10.1186/1297-9686-32-5-467), therefore enormoulsy saving cpu time and
+those blocks ([Perez-Enciso et al. 2000](https://gsejournal.biomedcentral.com/articles/10.1186/1297-9686-32-5-467), DOI: 10.1186/1297-9686-32-5-467), therefore enormoulsy saving cpu time and
 memory in all operations on Individual objects. Actual genotypes must be retrieved though for GBLUP, GWAS or PCA 
 analyses. This is achieved with ```do_X``` function
 
