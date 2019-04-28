@@ -175,12 +175,11 @@ project and illustrates genomic selection, how to save and reuse big files with 
 
 ### Main classes
 **SeqBreed** allows storing and accessing genomic and population information easily. 
-Most items of interest can be accessed directly or indirectly through the ```Population``` class. 
-Besides, ```Population``` has a series of methods allowing generating new individuals, 
-including the different selection steps. Other classes are ```GFounder```, containing genotypes from 
-base population individuals, ie, those in the vcf file, ```Genome``` contains all relevant genome
-features such as number of chromosomes, recombination rates, sequence snp positions..., and
- ```Chip```, which contains a list of SNP positions.
+
+* Most items of interest can be accessed directly or indirectly through the ```Population``` class. ```Population``` has a series of methods allowing generating new individuals, including the different selection steps. 
+* ```GFounder``` class allows containing genotypes from base population individuals, ie, those in the vcf file.
+* ```Genome``` contains all relevant genome features such as number of chromosomes, recombination rates, sequence snp positions...
+* ```Chip```, which contains a list of SNP positions.
 
 ### Input
 **SeqBreed** minimally only requires a genotype file in vcf or 'gen' formats, either compressed or uncompressed.
