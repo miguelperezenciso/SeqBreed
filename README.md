@@ -345,9 +345,8 @@ pop.plot(trait=itrait)
 
 ##### Retrieving genotype data 
 **SeqBreed** internally keeps individual genomes only as a collection of recombination blocks and founder origins of
-those blocks ([Perez-Enciso et al. 2000](https://gsejournal.biomedcentral.com/articles/10.1186/1297-9686-32-5-467), DOI: 10.1186/1297-9686-32-5-467), therefore enormoulsy saving cpu time and
-memory in all operations on Individual objects. Actual genotypes must be retrieved though for GBLUP, GWAS or PCA 
-analyses. This is achieved with ```do_X``` function
+those blocks ([Perez-Enciso et al. 2000](https://gsejournal.biomedcentral.com/articles/10.1186/1297-9686-32-5-467)), therefore enormoulsy saving cpu time and memory in all operations on Individual objects. 
+Actual genotypes must be retrieved though for GBLUP, GWAS or PCA analyses. This is achieved with ```do_X``` function
 
 ```X = do_X(inds, gfeatures, gbase, chip, minMaf=1e-6)```
 
@@ -381,15 +380,16 @@ where:
 - ```yIds``` (numpy int array): integer array specifying individuals with data (indexed starting with 0) [all]
 - ```trait```(int): trait index for which evaluation is performed [0]
 
-In sstep, marker files should contain only information for genotyped individuals and in the same order. doEBV 
-assigns EBV to pop.inds[:].ebv. Users can replace the function by any of their
-choice such that selection is based on the custom defined criterion. If vector ebvs contains the custom values,
+**In sstep, marker files should contain only information for genotyped individuals and in the same order.**
+
+Function ```doEBV``` assigns EBVs to ```pop.inds[:].ebv```. Users can replace the function by any of their
+choice such that selection is based on the custom defined criterion. For instance, if vector ```ebvs``` contains the custom values,
 then
 
     nind = len(pop.inds)
     for i in range(nind): pop.inds[i].ebv = ebvs[i]
 
-assigns new ebvs to pop object. The next step is to generate offspring from selected parents. 
+assigns new EBVs to ```pop``` object. The next step is to generate offspring from selected parents. 
 This is performed with function 
 
 ```
