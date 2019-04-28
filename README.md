@@ -393,7 +393,7 @@ assigns new EBVs to ```pop``` object. The next step is to generate offspring fro
 This is performed with function 
 
 ```
-newPed = gg.ReturnNewPed(pop, nsel, famsize, mating='random', generation=0)
+newPed = sel.ReturnNewPed(pop, nsel, famsize, mating='random', generation=0)
 ```
 
 where:
