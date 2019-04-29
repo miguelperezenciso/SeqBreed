@@ -291,11 +291,11 @@ qtnFile format is:
 One line for each QTN.
 
 ##### Genotyping Chips
-The Chip class allows efficient manipulation and storing of a genotyping array. Chips can be defined either by
-reading SNP positions from a file (chipFile) or can be generated from a random or uniform set of SNPs. In the 
+The ```Chip``` class allows efficient manipulation and storing of a genotyping array. Chips can be defined either by
+reading SNP positions from a file (```chipFile```) or can be generated from a random or uniform set of SNPs. In the 
 latter case, the number of SNPs in the chip must be specified and a minimum MAF can also be set.
 
-    chip = Chip(gfeatures, chipFile=None, nsnp=0, unif=False, minMaf=0, name='chip_') 
+    chip = gg.Chip(gfeatures, chipFile=None, nsnp=0, unif=False, minMaf=0, name='chip_') 
     
 where:
 
@@ -321,7 +321,7 @@ pedFile contains pedigree information, ie,
 
 where ids **MUST** be integer consecutive numbers from 1 onwards; id_father and id_mother **MUST** be 0 for
 all base individuals, ie, the number of individuals in the vcf file. If pedFile is not specified, 
-a dummy pedigree for all base individuals is generated (id 0 0 for id=1:nbase).
+a dummy pedigree for all base individuals is generated (```id 0 0``` for id=1:nbase).
 
 Individuals can be accessed by 
 
@@ -343,17 +343,18 @@ pop.inds[i].print(gfeatures)
 pop.plot(trait=itrait) 
 ```
 
-It is usually difficult to find real sequence data to obtain a reasonably sized founder population. 
+It is usually difficult to find real sequence data to obtain a reasonably sized founder (base) population. 
 An interesting feature of **SeqBreed** is the possibility of generating ‘dummy’ founder individuals 
 by randomly combining recombinant founder haplotypes. The following function adds a randomly generated individual:
 
 ```pop.addRandomInd(gfeatures, gbase.nbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)```
 
-where mode can be 'pedigree' or 'random', and k specifies the number of recombination generations. If mode is
+where ```mode``` can be 'pedigree' or 'random', and ```k``` specifies the number of recombination generations. If 
+```mode``` is
 'pedigree', a random pedigree consisting of 2^k founder individuals and k generations is simulated, and
 genedropping is performed along this pedigree. The resulting individual is added to the ```pop``` object.
-If mode is 'random', a recombinant chromosome with x ~ Poisson(0.5 k L), L being genetic lenth, recombinant breaks is simulated, and each strecth is assigned a random founder haplotype.
-
+If ```mode``` is 'random', a recombinant chromosome with x ~ Poisson(0.5 k L), L being genetic lenth, recombinant breaks
+is simulated, and each non-recombinant stretch is assigned a random founder haplotype.
 
 
 ##### Retrieving genotype data 
@@ -376,11 +377,15 @@ where:
  demanding. Beware with large SNP datasets.
 
 ##### Implementing selection
-Selection proceeds in three steps (see code above). First, estimated breeding values (EBVs) are obtained for the current
+Selection proceeds in three steps (see code above):
+* First, estimated breeding values (EBVs) are obtained for the current
 population. If molecular data are needed (GBLUP, ssGBLUP), an X matrix containing genotypes must be 
-generated with ```do_X``` function. Second, the best individuals are mated and offspring are generated. 
-Computationally, this is done by extending the current pedigree. Third, new genomes and phenotypes are generated 
-for the new offspring (but not EBVs). Estimated Breeding Values are obtained with function
+generated with ```do_X``` function. 
+* Second, the best individuals are mated and offspring are generated. 
+Computationally, this is done by extending the current pedigree. 
+* Third, new genomes and phenotypes are generated for the new offspring (but not their EBVs). 
+
+Estimated Breeding Values are obtained with function
 
 ```sel.doEbv(pop, criterion='random', h2=None, X=None, mkrIds=None, yIds=[], nh=2, itrait=0)```
 
