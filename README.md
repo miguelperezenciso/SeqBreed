@@ -343,6 +343,19 @@ pop.inds[i].print(gfeatures)
 pop.plot(trait=itrait) 
 ```
 
+It is usually difficult to find real sequence data to generate a reasonably sized founder population. 
+An interesting feature of **SeqBreed** is the possibility of generating ‘dummy’ founder individuals 
+by randomly combining recombinant founder haplotypes. The following function adds a randomly generated individual:
+
+```pop.addRandomInd(gfeatures, gbase.nbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)```
+
+where mode can be 'pedigree' or 'random', and k specifies the number of recombination generations. If mode is
+'pedigree', a random pedigree consisting of 2^k founder individuals and k generations is simulated, and
+genedropping is performed along this pedigree. The resulting individual is added to the ```pop``` object.
+If mode is 'random', stretches of length simulated according to an exponential with parameter 
+
+
+
 ##### Retrieving genotype data 
 **SeqBreed** internally keeps individual genomes only as a collection of recombination blocks and founder origins of
 those blocks ([Perez-Enciso et al. 2000](https://gsejournal.biomedcentral.com/articles/10.1186/1297-9686-32-5-467)), therefore enormoulsy saving cpu time and memory in all operations on Individual objects. 
