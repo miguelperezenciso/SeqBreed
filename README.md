@@ -34,6 +34,11 @@ To access the module, include the following in the program:
 
     from SeqBreed import genome as gg
     from SeqBreed.selection import selection as sel
+    
+Source code is provided in src, just in case. Files must be in working directory. To access them:
+
+    import genome as gg
+    import selection as sel
 
 ### Quick startup
 The basic phylosophy of **SeqBreed** is to have a file with SNP data from the founder population (in vcf format), 
