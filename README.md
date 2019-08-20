@@ -30,6 +30,10 @@ Clone the repository and run:
 
 `sudo python3 -m pip install SeqBreed-XXX.whl`
 
+Alternatively, you can install locally without sudo permits as:
+
+`pip3 install --user SeqBreed-XXX.whl`
+
 To access the module, include the following in the program: 
 
     from SeqBreed import genome as gg
