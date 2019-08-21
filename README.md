@@ -161,25 +161,14 @@ pca.p[:,:]   # Contains PCA values
 #                  GWAS
 #################################################################################################
 # This performs a GWAS on first phenotype using SNPs with MAF > 0.05 from chr 1 in last 100 individuals
-#--> First create Chip object if undefined
-chip_chr1 = gg.Chip(genome=gfeatures, chipFile='chr1.pos', name='chr1')
-#--> Second generate genotypes of last 100 individuals (say)
-X = gg.do_X(pop.inds[-100:], gfeatures, gbase, chip=chip_chr1, minMaf=0.05)
+#--> generate genotypes of last 100 individuals with minimum MAF = 0.05
+X = gg.do_X(pop.inds[-100:], gfeatures, gbase, chip=chip, minMaf=0.05)
 #--> Do and plot the GWAS
-gwas = sel.Gwas(X, chip_chr1)
+gwas = sel.Gwas(X, chip)
 gwas.fit(inds=pop.inds[-100:])   
 gwas.plot()            # plots pvalue
 gwas.plot(fdr=True)    # plots FDR
 gwas.print(gfeatures)  # prints values
-
-# GWAS precorrecting by first two PCs, using same X as in former GWAS
-#--> First, extract phenotypes
-y = np.array(list(ind.y[itrait] for ind in pop.inds))
-#--> Second pre correct y's
-y = y - pca.p[:,0] - pca.p[:,1]
-#--> Third, re adjust GWAS
-gwas.fit(y=y, trait=itrait)
-gwas.plot(fdr=True)    # FDR
 
 ```
 
