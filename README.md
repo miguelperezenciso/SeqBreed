@@ -380,7 +380,7 @@ The following adds a set of new individuals structured as a pedigree:
 
     pop.addPed(ped, genome=gfeatures, qtns=qtn, gfounders=gbase)
 
-where `ped` is an n x 3 or n x 4 array containing `id, father, mother, sex`. The last column `sex` is optional. In this case, `sex` is randomly sampled.
+where `ped` is an n x 3 or n x 4 array containing `id, father, mother, sex` per row. The last column `sex` is optional. In this case, `sex` is randomly sampled.
 
 #### 6. Retrieving genotype data 
 **SeqBreed** internally keeps individual genomes only as a collection of recombination blocks and founder origins of
