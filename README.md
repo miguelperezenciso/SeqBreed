@@ -47,7 +47,7 @@ Source code is provided in src, just in case. Files must be in working directory
 Program has been tested in mac and linux only, although it should run as any regular python script in windows.
 
 ### Examples
-* ```main.py``` and ```SeqBreed_tutorial.ipynb``` illustrates main functionalities.
+* [`main.py`](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py) and [`SeqBreed_tutorial.ipynb`](https://github.com/miguelperezenciso/SeqBreed/blob/master/SeqBreed_tutorial.ipynb) illustrates main functionalities.
 * [`POTATO`](https://github.com/miguelperezenciso/SeqBreed/tree/master/POTATO) folder contains data from tetraploid potato and illustrates how to generate an F2, how to do a GWAS, 
 PCA-corrected GWAS, how to simulate additional phenotypes...
 * [`DGRP`](https://github.com/miguelperezenciso/SeqBreed/tree/master/DGRP) folder contains data from the Drosphila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/)
