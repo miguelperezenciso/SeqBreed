@@ -47,7 +47,7 @@ Source code is provided in src, just in case. Files must be in working directory
 ### Quick startup
 The basic phylosophy of **SeqBreed** is to have a file with SNP data from the founder population (in vcf or plink - like format), specify causal SNPs (QTNs) and their effects for every phenotype (either in a file or can be simulated by the program) and, optionally, a pedigree that is used for gene-dropping. In addition to sequence data, the user can specify a subset of SNPs (a chip) that can be used to implement genomic selection, do a PCA or a GWAS. Next, new individuals can be manually added to the extant population or a selection scheme can be automatically implemented. At any stage, data can be inspected, exported or plotted via a Principal Component Analysis (PCA). 
 
-**All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise.** 
+**IMPORTANT: All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise.** 
 
 A quick code example is shown below (for more details, check accompanying python notebook, and continue reading)
 
@@ -98,9 +98,7 @@ pop.inds[-1].print(gfeatures) # prints summary of last individual, incl recombin
 
 # ALL STEPS ABOVE ARE NEEDED IN ANY SeqBreed RUN
 
-# SOME ADDITIONAL STEPS FOLLOW:
-#
-# Let us a perform a Genomic Selection experiment
+# PERFORM A GENOMIC SELECTION EXPERIMENT
 #
 # FIRST let us create a Chip object with snps used for selection, snp chip positions are in 'chip.pos' file
 chip = gg.Chip(genome=gfeatures, chipFile='chip.pos', name='chip1')
@@ -130,10 +128,10 @@ pop.plot()
 pop.plot(ebv=True) # EBVs of last generation are missing
 
 #
-# Let us do a principal component analysis (PCA) and an association study (GWAS)
+# Principal component analysis (PCA)
 #
 # You can do a PCA using all sequence or any set of snps as defined in a Chip object
-#--> First you need to define sequence as a Chip object
+#--> First you need to define sequence as a Chip object if you want to use all SNPs in sequence
 chipseq = gg.Chip(chipFile=seqposfile, genome=gfeatures, name='seq')
 #--> Second, generate a matrix with genotypes
 X = gg.do_X(pop.inds, gfeatures, gbase, chip=chipseq)
@@ -158,7 +156,7 @@ gwas.plot()            # plots pvalue
 gwas.plot(fdr=True)    # plots FDR
 gwas.print(gfeatures)  # prints values
 
-# Now we precorrect by first two PCs, using same X as in former GWAS
+# This performs a GWAS precorrecting by first two PCs, using same X as in former GWAS
 #--> First, extract phenotypes
 y = np.array(list(ind.y[itrait] for ind in pop.inds))
 #--> Second pre correct y's
@@ -180,7 +178,7 @@ project and illustrates genomic selection, how to save and reuse big files with 
 ### Main classes
 **SeqBreed** allows storing and accessing genomic and population information easily. 
 
-* Most items of interest can be accessed directly or indirectly through the ```Population``` class. ```Population``` has a series of methods allowing generating new individuals, including the different selection steps. 
+* ```Population``` class allows accessing most items of interest. It has a series of methods allowing generating new individuals, including the different selection steps. 
 * ```GFounder``` class allows storing genotypes from base population individuals, ie, those in the vcf / gen file.
 * ```Genome``` contains all relevant genome features such as number of chromosomes, recombination rates, sequence snp positions...
 * ```Chip``` contains a list of SNP positions.
@@ -195,14 +193,13 @@ simply
     chr base_pair indiv1_allele1  indiv1_allele2  indiv2_allele1 ...
 
 one row for each SNP, where alleles are coded as ```0, 1``` for diploids and ```0...(ploidy-1)``` for polyploids. 
-For example, the following gen file contains information for 3 markers and 2 individuals:
+For example, the following gen file contains information for 3 markers and 2 diploid individuals:
 
     chr1   1000 1 0 1 1
     chrX   100034 1 1 0 0
     chrX   200000 1 1 0 1
 
-If your genotypes file are in Plink format, you can use recoding options (https://www.cog-genomics.org/plink2/data#recode) 
-to generate a vcf file. See the POTATO folder for an example.
+This format can be generated easily from plink fam file.
 
 **NOTE:** **SeqBreed** recognizes vcf format if file name ends with 'vcf' or 'vcf.gz', everything else is
 treated as 'gen' format. **SeqBreed** automatically recognizes whether the files are gz compressed.
