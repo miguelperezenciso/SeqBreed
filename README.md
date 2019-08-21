@@ -320,7 +320,18 @@ where:
 - ```minMaf```(float) minimum MAF
 - ```name```(str) chip name
 
-If chipFile is specified, it overrides the generation option.
+If chipFile is specified, it overrides the generation option. `Chip` objects can be generated from a file containing SNP positions (`chipfile`):
+
+`chip = gg.Chip(genome=gfeatures, chipFile=chipfile) `
+
+or randomly generated. The following generates a chip with N equally spaced SNPs with MAF>maf
+
+`chip = gg.Chip(gfeatures, gbase, nsnp=N, unif=True, minMaf=maf)`
+
+The following generates a chip with N randomly chosen SNPs without any restriction on MAF:
+
+`chip = gg.Chip(gfeatures, gbase, nsnp=N, unif=False)`
+
 
 #### 5. Breeding population
 Most of information needed is in ```Population``` class, which is basically a collection of individuals plus
