@@ -1,4 +1,4 @@
-## SeqBreed: \A python tool to evaluate genomic prediction in complex scenarios
+## SeqBreed: A python tool to evaluate genomic prediction in complex scenarios
 #### Miguel Perez-Enciso (miguel.perez@uab.es)
 #### With contributions from Laura M Zingaretti (m.lau.zingaretti@gmail.com) and Lino Ramirez-Ayala (linocesar.ramirez@cragenomica.es)
 
