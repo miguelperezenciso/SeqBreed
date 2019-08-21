@@ -23,7 +23,7 @@ For instance, no new mutations are generated. We recommend to use real sequence 
 data as startup to realistically mimic variability and disequilibrium.  
 
 ### Requirements
-See requirements.txt
+See requirements.txt<https://github.com/miguelperezenciso/SeqBreed/blob/master/requirements.txt> 
 
 ### Installation
 Clone the repository and run:
