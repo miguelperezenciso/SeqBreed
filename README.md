@@ -46,6 +46,13 @@ Source code is provided in src, just in case. Files must be in working directory
 
 Program has been tested in mac and linux only, although it should run as any regular python script in windows.
 
+### Examples
+* ```main.py``` and ```SeqBreed_tutorial.ipynb``` illustrates main functionalities.
+* [`POTATO`](https://github.com/miguelperezenciso/SeqBreed/tree/master/POTATO) folder contains data from tetraploid potato and illustrates how to generate an F2, how to do a GWAS, 
+PCA-corrected GWAS, how to simulate additional phenotypes...
+* [`DGRP`](https://github.com/miguelperezenciso/SeqBreed/tree/master/DGRP) folder contains data from the Drosphila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/)
+project and illustrates genomic selection, how to save and reuse big files with ```pickle```, etc. 
+
 ### Quick startup
 The basic phylosophy of **SeqBreed** is to have a file with SNP data from the founder population (in vcf or plink - like format), specify causal SNPs (QTNs) and their effects for every phenotype (either in a file or can be simulated by the program) and, optionally, a pedigree that is used for gene-dropping. In addition to sequence data, the user can specify a subset of SNPs (a chip) that can be used to implement genomic selection, do a PCA or a GWAS. Next, new individuals can be manually added to the extant population or a selection scheme can be automatically implemented. At any stage, data can be inspected, exported or plotted via a Principal Component Analysis (PCA). 
 
@@ -178,14 +185,6 @@ gwas.fit(y=y, trait=itrait)
 gwas.plot(fdr=True)    # FDR
 
 ```
-
-### Examples
-* ```main.py``` and ```SeqBreed_tutorial.ipynb``` illustrates main functionalities.
-* POTATO folder contains data from tetraploid potato and illustrates how to generate an F2, how to do a GWAS, 
-PCA-corrected GWAS, how to simulate additional phenotypes...
-* DGRP folder contains data from the Drosphila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/)
-project and illustrates genomic selection, how to save and reuse big files with ```pickle```, etc. 
-
 
 ### Main classes
 **SeqBreed** allows storing and accessing genomic and population information easily. 
