@@ -86,7 +86,6 @@ os.chdir(wdir)
 # lines starting with '#' in pos and other input files are ignored
 vcffile    = ddir + 'f.vcf.gz'    # This is the vcf file with genotypes
 chipfile   = ddir + 'chip2.pos'   # This chip file contains a subset of snp positions
-chip1file  = ddir + 'chr1.pos'    # This chip file contains snp positions from chr 1
 
 # This generates a GFounder object that contains founder genotypes
 # ploidy and no. of individuals are inferred
@@ -120,10 +119,8 @@ pop.inds[-1].print(gfeatures) # prints summary of last individual, incl recombin
 #                    PERFORM A GENOMIC SELECTION EXPERIMENT
 #################################################################################################
 # FIRST let us create a Chip object with snps used for selection, snp chip positions are in 'chip.pos' file
-chip = gg.Chip(genome=gfeatures, chipFile='chip.pos', name='chip1')
-# or you can let the program generate a chip with 30 equally spaced SNPs with MAF>0.10
-chip = gg.Chip(gfeatures, gbase, nsnp=30, unif=True, minMaf=0.1, name='chip1')
-# In either case you can print chip summary
+chip = gg.Chip(genome=gfeatures, chipFile=chipfile, name='chip1')
+# print chip summary
 chip.print(gfeatures) 
 
 # SECOND, let us specify selection intensity
@@ -149,11 +146,9 @@ pop.plot(ebv=True) # EBVs of last generation are missing
 #################################################################################################
 #                 Principal component analysis (PCA)
 #################################################################################################
-# PCA using all sequence or any set of snps as defined in a Chip object
-#--> First you need to define sequence as a Chip object if you want to use all SNPs in sequence
-chipseq = gg.Chip(chipFile=seqposfile, genome=gfeatures, name='seq')
-#--> Second, generate a matrix with genotypes
-X = gg.do_X(pop.inds, gfeatures, gbase, chip=chipseq)
+# PCA using all snps as defined in a Chip object
+#--> We need to generate a matrix with genotypes using chip positions
+X = gg.do_X(pop.inds, gfeatures, gbase, chip=chip)
 #--> Returns 2D PCA
 pca = sel.Pca(X)
 pca.fit()
@@ -235,13 +230,10 @@ Auto polyploid genomes can also be specified.
 - **A starting pedigree**: If not provided, a new one is automatically generated where base individuals are unrelated. 
 
 ### Usage
-A step by step example is in ```main.py``` file. Folder DGRP contains an example of sequence data from Drosophila Genome Reference Panel
-(http://dgrp2.gnets.ncsu.edu/) detailing a genomic selection experiment, whereas the POTATO folder contains a GWAS example using 
-data from tetraploid potato.
+A step by step example is in ```main.py``` file. Folder DGRP contains an example of sequence data from Drosophila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/) detailing a genomic selection experiment, whereas the POTATO folder contains a GWAS example using  data from tetraploid potato.
 
 #### 1. Base population
-GFounder class constructor simply needs vcf file, name of output file with snp positions and minimimum
-frequency (MAF) for a snp to be considered.
+GFounder class constructor simply needs vcf file, name of output file with snp positions and minimimum frequency (MAF) for a snp to be considered.
 
 ```gbase = gg.GFounder(vcfFile, snpFile, minMaf=0)```
 
@@ -379,6 +371,16 @@ genedropping is performed along this pedigree. The resulting individual is added
 If ```mode``` is 'random', a recombinant chromosome with x ~ Poisson(0.5 k L), L being genetic lenth, recombinant breaks
 is simulated, and each non-recombinant stretch is assigned a random founder haplotype.
 
+**Adding extra individuals** manually is also possible. The following adds a male offspring (sex=0) from 24th and first individual:
+
+    parents = [pop.inds[23], pop.inds[0] ]
+    pop.addInd(parents, genome=gfeatures, gfounders=gbase, qtns=qtn, sex=0)
+
+The following adds a set of new individuals structured as a pedigree:
+
+    pop.addPed(ped, genome=gfeatures, qtns=qtn, gfounders=gbase)
+
+where `ped` is an n x 3 or n x 4 array containing `id, father, mother, sex`. The last column `sex` is optional. In this case, `sex` is randomly sampled.
 
 #### 6. Retrieving genotype data 
 **SeqBreed** internally keeps individual genomes only as a collection of recombination blocks and founder origins of
