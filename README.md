@@ -73,7 +73,7 @@ ddir= os.getcwd() + '/test/'
 # move to working directory (create if not present)
 wdir = os.getcwd() + '/work'
 if not os.path.exists(wdir):  os.makedirs(wdir)
-os.chwd(wdir)
+os.chdir(wdir)
 
 # pos files simply contain chromosome and base pair, either space or tab separated, 
 # lines starting with '#' in pos and other input files are ignored
