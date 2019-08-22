@@ -60,11 +60,11 @@ The minimum input for **SeqBreed** is the file with SNP genotypes and positions 
 
 **IMPORTANT: All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise.** 
 
-An introductory script showing **SeqBreed** can be found in jupyter notebook
+An introductory script showing **SeqBreed** functioning can be found in jupyter notebook:
 
 [SeqBreed_tutorial.ipynb](https://github.com/miguelperezenciso/SeqBreed/blob/master/SeqBreed_tutorial.ipynb)
 
-An equivalent script is in
+An equivalent script is in:
 
 [main.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py)
 
