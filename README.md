@@ -160,12 +160,12 @@ pca.p[:,:]   # Contains PCA values
 #################################################################################################
 #                  GWAS
 #################################################################################################
-# This performs a GWAS on first phenotype using SNPs with MAF > 0.05 from chr 1 in last 100 individuals
-#--> generate genotypes of last 100 individuals with minimum MAF = 0.05
-X = gg.do_X(pop.inds[-100:], gfeatures, gbase, chip=chip, minMaf=0.05)
+# This performs a GWAS on first phenotype
+#--> generate genotypes
+X = gg.do_X(pop.inds, gfeatures, gbase, chip=chip)
 #--> Do and plot the GWAS
 gwas = sel.Gwas(X, chip)
-gwas.fit(inds=pop.inds[-100:])   
+gwas.fit(inds=pop.inds)   
 gwas.plot()            # plots pvalue
 gwas.plot(fdr=True)    # plots FDR
 gwas.print(gfeatures)  # prints values
