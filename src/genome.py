@@ -881,6 +881,8 @@ class QTNs:
             plt.title('Cumulative Dom variance trait ' + str(trait))
             plt.xlabel('QTN MAF')
             plt.ylabel('Cum Variance')
+            
+            plt.subplots_adjust(wspace=.5, hspace=.5, top=2, right=1.2)
 
             if plotFile is not None:
                 plotfile = plotFile
