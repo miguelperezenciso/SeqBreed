@@ -71,15 +71,7 @@ The basic phylosophy of **SeqBreed** is to have a file with SNP data from the fo
 
 The minimum input for **SeqBreed** is the file with SNP genotypes and positions from the founder population. Addiitonal files mentioned add extra control but can be simulated (eg, QTN positions and effects or recombination rates). 
 
-**IMPORTANT: All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise.** 
-
-An introductory script showing **SeqBreed** functioning can be found in jupyter notebook:
-
-[SeqBreed_tutorial.ipynb](https://github.com/miguelperezenciso/SeqBreed/blob/master/SeqBreed_tutorial.ipynb)
-
-An equivalent script is in:
-
-[main.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py)
+**WARNING:** All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise. 
 
 ### Main classes
 **SeqBreed** allows storing and accessing genomic and population information easily. 
@@ -133,8 +125,11 @@ A step by step example is in ```main.py``` file. Folder DGRP contains an example
 A typical SeqBreed run consists of at least the following steps:
 
 1-	Upload founder sequence genotypes and a `GFounder` object is created. A file with all SNP positions in sequence is generated.
+
 2-	Initialize `Genome` class. Optionally, sex or mitochondrial chromosomes are specified as well as local recombination maps.
+
 3-	Genetic architectures for every trait are specified via a `QTNs` object. Environmental variances are also inferred.
+
 4-	A `Population` object is generated, optionally via gene-dropping along a predetermined pedigree.
 
 Once `Population` is initialized, SeqBreed allows a number of operations to be performed, such as implementing selection, plotting or exporting phenotype and molecular data.
