@@ -129,8 +129,18 @@ Auto polyploid genomes can also be specified.
 ### Usage
 A step by step example is in ```main.py``` file. Folder DGRP contains an example of sequence data from Drosophila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/) detailing a genomic selection experiment, whereas the POTATO folder contains a GWAS example using  data from tetraploid potato.
 
+#### 0. Main steps
+A typical SeqBreed run consists of at least the following steps:
+
+1-	Upload founder sequence genotypes and a `GFounder` object is created. A file with all SNP positions in sequence is generated.
+2-	Initialize `Genome` class. Optionally, sex or mitochondrial chromosomes are specified as well as local recombination maps.
+3-	Genetic architectures for every trait are specified via a `QTNs` object. Environmental variances are also inferred.
+4-	A `Population` object is generated, optionally via gene-dropping along a predetermined pedigree.
+
+Once `Population` is initialized, SeqBreed allows a number of operations to be performed, such as implementing selection, plotting or exporting phenotype and molecular data.
+
 #### 1. Base population
-GFounder class constructor simply needs vcf file, name of output file with snp positions and minimimum frequency (MAF) for a snp to be considered.
+`GFounder` class constructor simply needs vcf file, name of output file with snp positions and minimimum frequency (MAF) for a snp to be considered.
 
 ```gbase = gg.GFounder(vcfFile, snpFile, minMaf=0)```
 
