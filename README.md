@@ -1,6 +1,6 @@
 ## SeqBreed: A python tool to evaluate genomic prediction in complex scenarios
-#### Miguel Perez-Enciso (miguel.perez@uab.es)
-#### With contributions from Laura M Zingaretti (m.lau.zingaretti@gmail.com) and Lino Ramirez-Ayala (linocesar.ramirez@cragenomica.es)
+#### [Miguel Perez-Enciso](miguel.perez@uab.es)
+With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Lino C. Ramirez-Ayala](linocesar.ramirez@cragenomica.es)
 
 SeqBreed.py is a python3 software to simulate populations under (genomic) selection. 
 It inherits most of funcionality from SBVB ([Perez-Enciso et al., 2017](http://www.genetics.org/content/205/2/939.long), 
@@ -18,9 +18,7 @@ It can accommodate any number of complex phenotypes controlled by an arbitrary n
 In order to get full control of all **SeqBreed** functionalities, some python knowledge is recommended.
 However, this is not necessary for a basic usage as shown in the examples provided.
 
-**NOTE:** SeqBreed is designed for use in short term breeding experiments, not long term experiments. 
-For instance, no new mutations are generated. We recommend to use real sequence data or high density SNP 
-data as startup to realistically mimic variability and disequilibrium.  
+**NOTE:** SeqBreed is designed for use in short term breeding experiments only, as no new mutations are generated. We recommend to use real sequence data or high density SNP data as startup to realistically mimic variability and disequilibrium.  
 
 ### Requirements
 See [requirements.txt](https://github.com/miguelperezenciso/SeqBreed/blob/master/requirements.txt).
