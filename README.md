@@ -56,20 +56,22 @@ conda activate my_environment
 # to finish
 conda deactivate
 ```
-
-### Examples
-* [`main.py`](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py) and [`SeqBreed_tutorial.ipynb`](https://github.com/miguelperezenciso/SeqBreed/blob/master/SeqBreed_tutorial.ipynb) illustrates main functionalities.
-* [`POTATO`](https://github.com/miguelperezenciso/SeqBreed/tree/master/POTATO) folder contains data from tetraploid potato and illustrates how to generate an F2, how to do a GWAS, 
-PCA-corrected GWAS, how to simulate additional phenotypes...
-* [`DGRP`](https://github.com/miguelperezenciso/SeqBreed/tree/master/DGRP) folder contains data from the Drosphila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/)
-project and illustrates genomic selection, how to save and reuse big files with ```pickle```, etc. 
-
 ### Quick startup
 The basic phylosophy of **SeqBreed** is to have a file with SNP data from the founder population (in vcf or plink - like format), specify causal SNPs (QTNs) and their effects for every phenotype (either in a file or can be simulated by the program) and, optionally, a pedigree that is used for gene-dropping. In addition to sequence data, the user can specify a subset of SNPs (a chip) that can be used to implement genomic selection, do a PCA or a GWAS. Next, new individuals can be manually added to the extant population or a selection scheme can be automatically implemented. At any stage, data can be inspected, exported or plotted via a Principal Component Analysis (PCA). 
 
 The minimum input for **SeqBreed** is the file with SNP genotypes and positions from the founder population. Addiitonal files mentioned add extra control but can be simulated (eg, QTN positions and effects or recombination rates). 
 
 **WARNING:** All QTNs and all chip SNPs must be in the vcf/plink file, they are removed otherwise. 
+
+
+### Examples
+The best option to use the program is to follow the examples.
+* [`main.py`](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py) and [`SeqBreed_tutorial.ipynb`](https://github.com/miguelperezenciso/SeqBreed/blob/master/SeqBreed_tutorial.ipynb) illustrates main functionalities.
+* [`POTATO`](https://github.com/miguelperezenciso/SeqBreed/tree/master/POTATO) folder contains data from tetraploid potato and illustrates how to generate an F2, how to do a GWAS, 
+PCA-corrected GWAS, how to simulate additional phenotypes...
+* [`DGRP`](https://github.com/miguelperezenciso/SeqBreed/tree/master/DGRP) folder contains data from the Drosphila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/)
+project and illustrates genomic selection, how to save and reuse big files with ```pickle```, etc. 
+
 
 ### Main classes
 **SeqBreed** allows storing and accessing genomic and population information easily. 
@@ -117,9 +119,6 @@ Auto polyploid genomes can also be specified.
 - **A starting pedigree**: If not provided, a new one is automatically generated where base individuals are unrelated. 
 
 ### Usage
-A step by step example is in ```main.py``` file. Folder DGRP contains an example of sequence data from Drosophila Genome Reference Panel (http://dgrp2.gnets.ncsu.edu/) detailing a genomic selection experiment, whereas the POTATO folder contains a GWAS example using  data from tetraploid potato.
-
-#### 0. Main steps
 A typical SeqBreed run consists of at least the following steps:
 
 1-	Upload founder sequence genotypes and a `GFounder` object is created. A file with all SNP positions in sequence is generated.
