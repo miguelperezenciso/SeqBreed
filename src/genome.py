@@ -882,13 +882,13 @@ class QTNs:
             plt.xlabel('QTN MAF')
             plt.ylabel('Cum Variance')
             
-            plt.subplots_adjust(wspace=.5, hspace=.5, top=2, right=1.2)
+            plt.subplots_adjust(wspace=.5, hspace=.5, top=1.8, right=1.2)
 
             if plotFile is not None:
                 plotfile = plotFile
                 if self.ntrait > 1:
                     plotfile = plotFile[:-3] + str(trait) + '.' + plotFile[-3:]
-                plt.savefig(plotfile)
+                plt.savefig(plotfile, bbox_inches='tight')
             plt.show()
 
 
