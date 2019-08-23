@@ -17,9 +17,6 @@ BLUP, GBLUP and single step GBLUP are currently implemented.
 It can accommodate any number of complex phenotypes controlled by an arbitrary number of loci 
 (epistasis is not currently implemented though). Strict autopolyploid genomes can be simulated, as well as sex and mitochondrial chromosomes.
 
-In order to get full control of all **SeqBreed** functionalities, some python knowledge is recommended.
-However, this is not necessary for a basic usage as shown in the examples provided.
-
 **NOTE:** SeqBreed is designed for use in short term breeding experiments only, as no new mutations are generated. We recommend to use real sequence data or high density SNP data as startup to realistically mimic variability and disequilibrium.  
 
 ### Requirements
