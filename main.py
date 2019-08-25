@@ -34,7 +34,8 @@ from SeqBreed.selection import selection as sel
 # current dir
 cdir = os.getcwd()
 
-# working directory
+# working directory create if not exists
+if not os.path.isdir('./file.txt'): os.mkdir('work')
 wdir = cdir + '/work'
 
 # input file dir
