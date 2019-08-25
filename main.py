@@ -35,11 +35,11 @@ from SeqBreed.selection import selection as sel
 cdir = os.getcwd()
 
 # working directory create if not exists
-if not os.path.isdir('./file.txt'): os.mkdir('work')
+if not os.path.isdir('work'): os.mkdir('work')
 wdir = cdir + '/work'
 
 # input file dir
-ddir= cdir + '/test'
+ddir = cdir + '/test'
 
 # input files
 pedfile = ddir + '/test.ped'
