@@ -46,10 +46,10 @@ Program has been tested in mac and linux only, although it should run as any reg
 As in any python project, it is recommended to use a separate environment to avoid conflicts between package versions. You can do that with **conda** as follows:
 
 ```
-conda create -n my_environment
-conda activate my_environment
+conda create -n seqbreed_environment
+conda activate seqbreed_environment
    # do all instalation of required packages, eg,
-   pip3 install --user SeqBreed-XXX.whl
+   python3 -m pip install --user SeqBreed-XXX.whl
    # run python
    ....
 # to finish
