@@ -1,5 +1,6 @@
 """
     Generic SeqBreed.py pipeline example to illustrate functionalities
+    It requires files in test folder
     For other non toy examples, check example_dgrp.py and example_potato.py
 
 """
