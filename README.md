@@ -337,15 +337,13 @@ newPed = sel.ReturnNewPed(pop, nsel, famsize, mating='random', generation=0)
 
 where:
 
-- ```nsel``` (int np two element array) contains the number of males and females to be selected as parents.
+- ```nsel``` (int numpy two element array) contains the number of males and females to be selected as parents.
 - ```famsize```(int): number of offspring per female
-- ```mating```(str): 'random' (=='r') or 'assortative' (=='a') [random], with assortative mating, best males are mated 
-to best females
+- ```mating```(str): 'random' (=='r') or 'assortative' (=='a'). 'random' means males and females are mated at random; 'assortative' means that best males are mated to best females.
 - ```generation```(int): only individuals from generation onwards are considered as potential parents [all = 0] ,
 this can be used to specify discrete or continuous generations.
 
-The pedigree of newly generated offspring is returned (```newPed```), and pop object is extended with 
-```Population``` method:
+`ReturnNewPed` method returns offspring of selected parents (```newPed``` is an array with this pedigree), and `pop` object is extended with ```Population``` method `addPed` as follows:
 
     pop.addPed(newPed, gfeatures, qtn, gbase, t=None)
     
@@ -357,10 +355,12 @@ where:
 - ```t``` is an integer with generation, and stored in vector ```pop.t``` , by default, t is increased by one and all
 new individuals are assigned ```t = max(current pop.t) + 1```.
 
+This method actually generates the genomes and phenotypes of new offspring and adds it to `pop` object. Generation counter `t` is automatically increased by 1.
+
 See accompanying script ```main.py``` for examples. 
   
 #### 8. PCA and GWAS
-Both PCA and GWAS, the latter simply using a regression SNP by SNP. In either case, you must first 
+Both PCA and GWAS plots can be obtained, GWAS simply performs a regression SNP by SNP. In either case, you must first 
 generate the genotypic data X (This has been parallelized but can be expensive though).
 
 ```
@@ -387,6 +387,7 @@ gwas.plot(fdr=True)        # plots FDR
 gwas.plot()                # plots pvalue
 gwas.print(gfeatures)      # prints gwas results
 ```
+By default, `gwas` uses raw phenotypes. Example in 
 
 ### Citation
 Please cite this if you use or reuse the code:
