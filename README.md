@@ -7,15 +7,14 @@ With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Li
 SeqBreed.py is a python3 software to simulate populations under (genomic) selection. 
 It inherits most of funcionality from SBVB ([Perez-Enciso et al., 2017](http://www.genetics.org/content/205/2/939.long), 
 https://github.com/miguelperezenciso/sbvb1) and pSBVB ([Zingaretti et al. 2018](http://www.g3journal.org/content/9/2/327.long),
- https://github.com/lauzingaretti/pSBVB) softwares but is much more user friendly and adds numerous new features
-  such as easy selection implementation (BLUP, GBLUP, SSTEP), plots (PCA, GWAS)... 
+ https://github.com/lauzingaretti/pSBVB) softwares but code has been completely rewritten. It is now much more user friendly and adds numerous new features such as easy selection implementation (BLUP, GBLUP, SSTEP), plots (PCA, GWAS)... 
 
 Its main target is to simulate genomic selection experiments but can be used as well to study the performance of GWAS or,
 in general, study the dynamics of complex traits under numerous selection criteria: drift, mass selection, 
 BLUP, GBLUP and single step GBLUP are currently implemented. 
 
 It can accommodate any number of complex phenotypes controlled by an arbitrary number of loci 
-(epistasis is not currently implemented though). Strict autopolyploid genomes can be simulated, as well as sex and mitochondrial chromosomes.
+(epistasis is not currently implemented though). Autopolyploid genomes can be simulated, as well as sex and mitochondrial chromosomes.
 
 **NOTE:** SeqBreed is designed for use in short term breeding experiments only, as no new mutations are generated. We recommend to use real sequence data or high density SNP data as startup to realistically mimic variability and disequilibrium.  
 
