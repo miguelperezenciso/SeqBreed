@@ -387,7 +387,7 @@ gwas.plot(fdr=True)        # plots FDR
 gwas.plot()                # plots pvalue
 gwas.print(gfeatures)      # prints gwas results
 ```
-By default, `gwas` uses raw phenotypes. Example in potato.py illustrates how to correct for PC components:
+By default, `gwas` uses raw phenotypes. Example in [potato.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/POTATO/potato.py) illustrates how to correct for PC components:
 
 ```
 pca = sel.Pca(X)
