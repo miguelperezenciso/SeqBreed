@@ -393,7 +393,7 @@ gwas.print(gfeatures)      # prints gwas results
 Please cite this if you use or reuse the code:
 
 M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2019. SeqBreed: a python tool to evaluate genomic prediction 
-in complex scenarios. Submitted.
+in complex scenarios. [Submitted](https://www.biorxiv.org/content/10.1101/748624v1). 
 
 ### How to contribute
 Please send comments, suggestions or report bugs to miguel.perez@uab.es. From 2020 on, I will be working at
