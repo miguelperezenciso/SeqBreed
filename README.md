@@ -22,7 +22,7 @@ It can accommodate any number of complex phenotypes controlled by an arbitrary n
 See [requirements.txt](https://github.com/miguelperezenciso/SeqBreed/blob/master/requirements.txt).
 
 ### Last changes
-* Dihaploid offspring can be generated now
+* Dihaploid offspring can be generated now (https://github.com/miguelperezenciso/SeqBreed/blob/master/README.md#5-breeding-population)
 
 ### Installation
 Clone the repository and run:
@@ -275,7 +275,7 @@ is simulated, and each non-recombinant stretch is assigned a random founder hapl
     parents = [pop.inds[23], pop.inds[0] ]
     pop.addInd(parents, genome=gfeatures, gfounders=gbase, qtns=qtn, sex=0)
 
-The following generates a dihaploid individual out of last individual in population:
+The following generates a **dihaploid** offspring of last individual in population:
 
     parents = [pop.inds[-1], pop.inds[-1]]
     pop.addInd(parents, dihap=True, genome=gfeatures, gfounders=gbase, qtns=qtn, sex=0)
