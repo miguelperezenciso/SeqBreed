@@ -114,6 +114,16 @@ print('No. of individuals is '+str(len(pop.inds)))
 # k specifies number of recombination generations
 pop.addRandomInd(gfeatures, gbase.nbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)
 
+# this adds a new individual, a male offpsring of 24rd and 1st individuals
+parents = [pop.inds[23], pop.inds[0] ]
+pop.addInd(parents, genome=gfeatures, gfounders=gbase, qtns=qtn, sex=0)
+pop.inds[-1].print(gfeatures) #prints ind features
+
+# this adds a dihaploid individual offspring of last ind
+parents = [pop.inds[-1], pop.inds[-1] ]
+pop.addInd(parents, dihap=True, genome=gfeatures, gfounders=gbase, qtns=qtn, sex=0)
+pop.inds[-1].print(gfeatures) #prints ind features
+
 # prints pedigree, genotype and phenotypic values in file 'pop.out'
 pop.print('pop.out')
 
