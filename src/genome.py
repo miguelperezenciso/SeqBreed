@@ -1050,8 +1050,9 @@ class Individual:
                 hap[1] = hap[0]
             self.gchunk.append(hap)
 
-    def mate(self, parents, genome):
+    def mate(self, parents, genome, dihap=False):
         """ generates offspring genome in chrChunk format
+            dihap states dihaploid generated, parents needs only one element
             ULL: what to do if one parent unknown
         """
         nh = genome.ploidy
@@ -1067,6 +1068,10 @@ class Individual:
                 hap = [chunk, chunk]
             elif genome.chrs[ichr].Y:
                 hap = [parents[0].gchunk[ichr][0], parents[0].gchunk[ichr][0]]
+            # in dihaploids, a gamete is generated and duplicated
+            elif dihap:
+                chunk = meiosis(parents[0].gchunk[ichr], genome.chrs[ichr], parents[0].sex, nh, auto)
+                hap = [chunk, chunk]
             # for X chr and female offs, no recombination in male map
             else:
                 hap = []
@@ -1257,16 +1262,17 @@ class Population:
         self.n += 1
         self.t = np.append(self.t, t)
 
-    def addInd(self, parents, genome, gfounders=None, qtns=None, id=None, sex=None, t=0):
+    def addInd(self, parents, genome, dihap=False, gfounders=None, qtns=None, id=None, sex=None, t=0):
         """ add new individual as offspring of parents
             parents is a list of two Individual objects
+            dihap = True states a dihaploid is generated
         """
         if id is None:
             id = len(self.inds)+1
         if sex is None:
             sex = np.random.randint(0,2)
         ind = Individual(id, parents[0].id, parents[1].id, sex=sex)
-        ind.mate(parents, genome)
+        ind.mate(parents, genome, dihap)
         if qtns is not None:
             ind.set_qtn(qtns, genome, gfounders)  # get qtn genotypes
             ind.set_gvalues(qtns)         # get add and dom values
