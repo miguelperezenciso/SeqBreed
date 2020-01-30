@@ -38,10 +38,10 @@ To access the module, include the following in the program:
     from SeqBreed import genome as gg
     from SeqBreed.selection import selection as sel
     
-Source code is provided in src, just in case. Files must be in working directory. To access them:
+Source code is also provided in src folder. To access them whtin the program instead of using pip installation:
 
-    import genome as gg
-    import selection as sel
+    from src import genome as gg
+    from src import selection as sel
 
 Program has been tested in mac and linux only, although it should run as any regular python script in windows.
 
@@ -412,12 +412,11 @@ gwas.plot()
 ### Citation
 Please cite this if you use or reuse the code:
 
-M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2019. SeqBreed: a python tool to evaluate genomic prediction 
-in complex scenarios. [Submitted](https://www.biorxiv.org/content/10.1101/748624v1). 
+M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020. SeqBreed: a python tool to evaluate genomic prediction 
+in complex scenarios. Genetics Selection Evolution. In press. [Submitted](https://www.biorxiv.org/content/10.1101/748624v1). 
 
 ### How to contribute
-Please send comments, suggestions or report bugs to miguel.perez@uab.es. From 2020 on, I will be working at
-INIA in Madrid (Spain), check at [INIA](www.inia.es) website or in the internet for my new email.
+Please send comments, suggestions or report bugs to miguel.perez@uab.es. 
 
 #### Disclaimer
 Copyright (C) 2019  Miguel Perez-Enciso
