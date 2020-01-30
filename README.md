@@ -22,6 +22,7 @@ It can accommodate any number of complex phenotypes controlled by an arbitrary n
 See [requirements.txt](https://github.com/miguelperezenciso/SeqBreed/blob/master/requirements.txt).
 
 ### Last changes
+* addRandomInd function sintaxis changed slightly. It allows now to select the intervening subset of base individuals 
 * Dihaploid offspring can be generated now (https://github.com/miguelperezenciso/SeqBreed/blob/master/README.md#5-breeding-population). See example in [main.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py)
 
 ### Installation
@@ -262,13 +263,21 @@ It is usually difficult to find real sequence data to obtain a reasonably sized 
 An interesting feature of **SeqBreed** is the possibility of generating ‘dummy’ founder individuals 
 by randomly combining recombinant founder haplotypes. The following function adds a randomly generated individual:
 
-```pop.addRandomInd(gfeatures, gbase.nbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)```
+```pop.addRandomInd(gfeatures, gbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)```
 
 where ```mode``` can be 'pedigree' or 'random', and ```k``` specifies the number of recombination generations. If 
 ```mode``` is 'pedigree', a random pedigree consisting of 2^k founder individuals and k generations is simulated, and
 genedropping is performed along this pedigree. The resulting individual is added to the ```pop``` object.
 If ```mode``` is 'random', a recombinant chromosome with x ~ Poisson(0.5 k L), L being genetic lenth, recombinant breaks
 is simulated, and each non-recombinant stretch is assigned a random founder haplotype.
+
+It is possible to select the list of intervening founder individuals with key 'idsbase'.
+This can be useful if base population is madeup of several breeds and one is interested, e.g., in augmenting the offspring number of one breed only.
+
+    # list of founder inds. Inds index start at 1 (ie, first individual)
+    ids_list = [1, 3, 5, 13]  
+    pop.addRandomInd(gfeatures, gbase, idsbase=ids_list, k=5, mode='pedigree', qtns=qtn)
+
 
 **Adding extra individuals** manually is also possible. The following adds a male offspring (sex=0) from 24th and first individual:
 
