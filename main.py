@@ -27,16 +27,23 @@ import copy
 import pickle
 import os
 import matplotlib.pyplot as plt
-
-# specific seqbreed modules
-from SeqBreed import genome as gg
-from SeqBreed.selection import selection as sel
-
+import sys
+sys.path.append(os.getcwd())
 # current dir
 cdir = os.getcwd()
+print(cdir)
+
+# specific seqbreed modules
+# USE THIS if importing from src files directly
+from src import genome as gg
+from src import selection as sel
+# USE THIS if SeqBreed module has been installed with pip as detailed in github
+#from SeqBreed import genome as gg
+#from SeqBreed.selection import selection as sel
 
 # working directory create if not exists
 if not os.path.isdir('work'): os.mkdir('work')
+
 wdir = cdir + '/work'
 
 # input file dir
@@ -109,10 +116,17 @@ qtn.plot(plotFile='qtn.png')
 pop = gg.Population(gfeatures, pedFile=None, generation=None, qtns=qtn, gfounders=gbase)
 print('No. of individuals is '+str(len(pop.inds)))
 
-# this function adds a randomly generated individual
+# This function adds a randomly generated individual starting with random mating between
+# extant founder individuals
 # mode can be 'pedigree' or 'random'
 # k specifies number of recombination generations
-pop.addRandomInd(gfeatures, gbase.nbase, k=5, mode='pedigree', qtns=qtn, gfounders=gbase)
+pop.addRandomInd(gfeatures, gbase, k=5, mode='pedigree', qtns=qtn)
+
+# It is possible to restrict the list of intervening founder individuals with key 'idsbase'
+# This can be useful if base population is madeup of several breeds and one is interested in
+# augmenting the number of one breed only
+ids_list = [1, 3, 5, 13]  # list of founder inds (1,2,...,nbase)
+pop.addRandomInd(gfeatures, gbase, idsbase=ids_list, k=5, mode='pedigree', qtns=qtn)
 
 # this adds a new individual, a male offpsring of 24rd and 1st individuals
 parents = [pop.inds[23], pop.inds[0] ]
@@ -292,4 +306,3 @@ import inspect
 lines = inspect.getsource(dogwas)
 print(lines)
 '''
-
