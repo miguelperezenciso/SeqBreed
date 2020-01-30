@@ -22,7 +22,7 @@ It can accommodate any number of complex phenotypes controlled by an arbitrary n
 See [requirements.txt](https://github.com/miguelperezenciso/SeqBreed/blob/master/requirements.txt).
 
 ### Last changes
-* `addRandomInd` function sintaxis changed slightly. It allows now to select the intervening subset of base individuals.
+* `addRandomInd` function sintaxis changed slightly. It allows now to select the intervening subset of base individuals. See example in [main.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py)
 
 * Dihaploid offspring can be generated now (https://github.com/miguelperezenciso/SeqBreed/blob/master/README.md#5-breeding-population). See example in [main.py](https://github.com/miguelperezenciso/SeqBreed/blob/master/main.py)
 
