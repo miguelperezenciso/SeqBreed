@@ -1,3 +1,4 @@
+# AddRandomInd modified to preselect founders
 """
   SeqBreed.py allows simulating quantitative traits of an arbitrary complexity
     in either diploid or polyploid organisms
@@ -1024,6 +1025,7 @@ class Individual:
     def initRandomChunk(self, ibase, t, genome):
         """ Inits chr chunks assuming a poisson process t generations
             ibase should contain all possible nbase*ploidy origins
+            sample origins with repetition
         """
         for ichr in range(genome.nchr):
             hap = []
@@ -1035,7 +1037,9 @@ class Individual:
                     nxover = np.random.poisson(genome.chrs[ichr].M[h]*t*0.5)
                 else:
                     nxover = np.random.poisson(genome.chrs[ichr].M[h]*t)
-                origins = np.random.permutation(ibase)[:(nxover+1)]
+                # sample origins with repetition
+                #origins = np.random.permutation(ibase)[:(nxover+1)]
+                origins = np.random.choice(ibase, size=(nxover+1), replace=True)
                 # dummy initialization
                 chunk = ChunkChromosome([genome.chrs[ichr].length], origins, [genome.chrs[ichr].nsnp])
                 chunk.random(origins, genome.chrs[ichr])
@@ -1162,8 +1166,7 @@ class Population:
                         origin = np.array(list(range(2*i,2*i+(nh))))
                         self.addBaseInd(genome, origins=origin, id=id, sex=idsex, qtns=qtns, gfounders=gfounders)
                     else:  # randomly generated base individual
-                        self.addRandomInd(genome, self.nbase, id=id, sex=idsex, t=5, mode='random', qtns=qtns,
-                                     gfounders=gfounders)
+                        self.addRandomInd(genome, gfounders, id=id, sex=idsex, t=5, mode='random', qtns=qtns)
                 elif sire > 0 and dam > 0:
                     # ULL: ids start at 1 but ind.id list index start at 0
                     parents = [self.inds[sire-1],self.inds[dam-1]]
@@ -1209,9 +1212,10 @@ class Population:
         self.n += 1
         self.t = np.append(self.t, 0)
 
-    def addRandomInd(self, genome, nbase, id=None, sex=None, t=0, k=5, mode='random', qtns=None, gfounders=None):
+    def addRandomInd(self, genome, gfounders, idsbase=None, id=None, sex=None, k=5, mode='random', qtns=None):
         """ adds a new individual by recombining existing genomes
             take 2**k individuals and mate them randomly for k generations
+            idsbase contains list of potential parents, all in gfounders by default
             mode='random' random chunks of chrs are generated and origins randomly assigned
             mode='pedigree' generates random pedigree
         """
@@ -1219,20 +1223,32 @@ class Population:
         if id is None: id = len(self.inds)+1
         if sex is None: sex = np.random.randint(0,2)
 
-        # range of potential parents
-        ibase = list(range(nbase))
-        if len(ibase) < 2**k:
-            ibase = ibase * round((2**k / len(ibase) + 0.5))
-        ibase = ibase[:(2**k + 1)]
-        ibase = np.random.permutation(ibase)
-
         # mode for adding randomly generated individuals
         if mode == 'random':
+            if idsbase is None:
+               ibase = list(range(gfounders.nbase * gfounders.ploidy))
+            # list of haplotype founders, consider ploidy
+            else:
+               nh = gfounders.ploidy
+               ibase = ([np.arange((i-1)*nh,i*nh) for i in idsbase])
+               ibase = np.asarray(ibase).flatten()
             ind = Individual(id, 0, 0, sex=sex)
             ind.initRandomChunk(ibase, k, genome)
 
         # via a pedigree with 2**k ancestors
         elif mode == 'pedigree':
+            if idsbase is None:
+               ibase = list(range(gfounders.nbase))
+            # list of haplotype founders, consider ploidy
+            else:
+               # idsbase is 1,2,... --> 0,1...
+               ibase = list(i-1 for i in idsbase)
+            # repeat list if not enough founders
+            if len(ibase) < 2**k:
+               ibase = np.random.permutation(ibase) # permute to avoid systematic founder repetition
+               ibase = ibase * round((2**k / len(ibase) + 0.5))
+            ibase = ibase[:(2**k + 1)] # should be ibase[:(2**k + 1)] ??
+            ibase = np.random.permutation(ibase)
             nh = genome.ploidy
             ped = k2ped(k)  # generates pedigree of fake individual
             nfake = ped.shape[0]
@@ -1242,7 +1258,7 @@ class Population:
                 # id is always pop n + id
                 ind = Individual(id, ids=0, idd=0, sex=sex)
                 if ped[i0,1]==0:
-                    i = ibase[i0] # random origin
+                    i = ibase[i0] # random base individual
                     ind.initChunk(genome, origin=np.array(list(range(2*i, 2*i + nh))))
                 else:
                     ids = ped[i0,0]-1
@@ -1255,12 +1271,12 @@ class Population:
 
         if qtns:
             ind.set_qtn(qtns, genome, gfounders)  # get qtn genotypes
-            ind.set_gvalues(qtns)         # get add and dom values
+            ind.set_gvalues(qtns)                 # get add and dom values
             if qtns.se is not None: ind.set_phenotypes(qtns)
         # last individual is finally appended
         self.inds.append(ind)
         self.n += 1
-        self.t = np.append(self.t, t)
+        self.t = np.append(self.t, 0)
 
     def addInd(self, parents, genome, dihap=False, gfounders=None, qtns=None, id=None, sex=None, t=0):
         """ add new individual as offspring of parents
