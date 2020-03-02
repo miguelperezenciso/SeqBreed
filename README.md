@@ -1,6 +1,6 @@
 ## [SeqBreed: A python tool to evaluate genomic prediction in complex scenarios](https://www.biorxiv.org/content/10.1101/748624v1)
-#### [Miguel Perez-Enciso](https://publons.com/researcher/1438761/miguel-perez-enciso/)
-Email: miguel.perez@uab.es
+#### [Miguel Perez-Enciso](https://publons.com/researcher/1438761/miguel-perez-enciso/) miguel.perez@uab.es
+
 With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Lino C. Ramirez-Ayala](linocesar.ramirez@cragenomica.es)
 
 ### Disclaimer
