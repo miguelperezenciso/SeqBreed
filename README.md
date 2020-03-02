@@ -6,6 +6,7 @@ With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Li
 please see https://github.com/miguelperezenciso/SeqBreed#disclaimer below
 
 ### Citation
+[M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020](https://gsejournal.biomedcentral.com/articles/10.1186/s12711-020-0530-2). SeqBreed: a python tool to evaluate genomic prediction in complex scenarios. Genetics Selection Evolution. 52, Article number: 7. 
 
 ---
 
@@ -427,7 +428,7 @@ gwas.plot()
 ### Citation
 Please cite this if you use or reuse the code:
 
-[M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020](https://gsejournal.biomedcentral.com/articles/10.1186/s12711-020-0530-2). SeqBreed: a python tool to evaluate genomic prediction in complex scenarios. Genetics Selection Evolution. . 
+[M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020](https://gsejournal.biomedcentral.com/articles/10.1186/s12711-020-0530-2). SeqBreed: a python tool to evaluate genomic prediction in complex scenarios. Genetics Selection Evolution. 52, Article number: 7. 
 
 ### How to contribute
 Please send comments, suggestions or report bugs to miguel.perez@uab.es. 
