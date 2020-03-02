@@ -2,6 +2,11 @@
 #### [Miguel Perez-Enciso](miguel.perez@uab.es)
 With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Lino C. Ramirez-Ayala](linocesar.ramirez@cragenomica.es)
 
+### Disclaimer
+please see https://github.com/miguelperezenciso/SeqBreed#disclaimer below
+
+### Citation
+
 ---
 
 SeqBreed.py is a python3 software to simulate populations under (genomic) selection. 
@@ -422,8 +427,7 @@ gwas.plot()
 ### Citation
 Please cite this if you use or reuse the code:
 
-M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020. SeqBreed: a python tool to evaluate genomic prediction 
-in complex scenarios. Genetics Selection Evolution. In press. [Submitted](https://www.biorxiv.org/content/10.1101/748624v1). 
+[M. Perez-Enciso, L.C. Ramirez-Ayala,  L.M. Zingaretti. 2020](https://gsejournal.biomedcentral.com/articles/10.1186/s12711-020-0530-2). SeqBreed: a python tool to evaluate genomic prediction in complex scenarios. Genetics Selection Evolution. . 
 
 ### How to contribute
 Please send comments, suggestions or report bugs to miguel.perez@uab.es. 
