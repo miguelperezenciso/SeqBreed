@@ -3,7 +3,7 @@
 miguel.perez@uab.es
 
 
-With contributions from [Laura M Zingaretti](m.lau.zingaretti@gmail.com) and [Lino C. Ramirez-Ayala](linocesar.ramirez@cragenomica.es)
+With contributions from [Laura M Zingaretti](https://www.linkedin.com/in/laura-m-zingaretti/) and [Lino C. Ramirez-Ayala](https://www.linkedin.com/in/lino-cesar-ramirez-ayala/?originalSubdomain=es)
 
 ### Disclaimer
 please see https://github.com/miguelperezenciso/SeqBreed#disclaimer below
