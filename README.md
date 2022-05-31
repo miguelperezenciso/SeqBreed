@@ -1,5 +1,5 @@
 ## [SeqBreed: A python tool to evaluate genomic prediction in complex scenarios](https://www.biorxiv.org/content/10.1101/748624v1)
-#### [Miguel Perez-Enciso](https://publons.com/researcher/1438761/miguel-perez-enciso/) 
+#### [Miguel Pérez-Enciso](https://publons.com/researcher/1438761/miguel-perez-enciso/) 
 miguel.perez@uab.es
 
 
