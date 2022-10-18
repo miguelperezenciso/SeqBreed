@@ -38,11 +38,11 @@ See [requirements.txt](https://github.com/miguelperezenciso/SeqBreed/blob/master
 ### Installation
 Clone the repository and run:
 
-`sudo python3 -m pip install SeqBreed-XXX.whl`
+`sudo python3 -m pip install SeqBreed-0.1-py3-none-any.whl`
 
 Alternatively, you can install locally without sudo permits as:
 
-`pip3 install --user SeqBreed-XXX.whl`
+`pip3 install --user SeqBreed-0.1-py3-none-any.whl`
 
 To access the module, include the following in the program: 
 
@@ -54,7 +54,7 @@ Source code is also provided in src folder. To access them whtin the program ins
     from src import genome as gg
     from src import selection as sel
 
-Program has been tested in mac and linux only, although it should run as any regular python script in windows.
+Program has been tested in mac and linux only, although it should run as any regular python script in windows. For windows, we recommend the [wsl](https://learn.microsoft.com/en-us/windows/wsl/about) tool
 
 As in any python project, it is recommended to use a separate environment to avoid conflicts between package versions. You can do that with **conda** as follows:
 
